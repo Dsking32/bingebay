@@ -134,7 +134,7 @@
 
         .nav-content {
             display: flex;
-            justify-content: flex-start;;
+            justify-content: flex-start;
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
@@ -149,8 +149,8 @@
             animation: logo-glow 3s ease-in-out infinite alternate;
             letter-spacing: -1px;
             text-decoration: none;
-            
-
+            margin-right: auto;
+            padding-left: 10px;
         }
 
         .logo-img {
@@ -481,10 +481,12 @@
             .nav-content {
                 flex-wrap: wrap;
                 gap: 1rem;
+                justify-content: flex-start;
             }
 
             .logo {
                 font-size: 1.5rem;
+                margin-right: auto;
             }
 
             .logo-img {
@@ -594,12 +596,15 @@
             }
 
             .nav-content {
-                flex-direction: column;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
                 gap: 0.5rem;
             }
 
             .logo {
                 font-size: 1.3rem;
+                margin-right: auto;
             }
 
             .logo-img {
@@ -808,7 +813,6 @@
             });
             
             // Open clicked item if it wasn't active
-                        // Open clicked item if it wasn't active
             if (!isActive) {
                 faqItem.classList.add('active');
             }
@@ -820,7 +824,7 @@
         }
 
         function reportIssue() {
-            window.location.href = "report-issue.html"; // Change to your actual report issue page
+            window.location.href = "report-issue.html";
         }
     </script>
 </body>
