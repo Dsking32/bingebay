@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showmax - Stream the Best</title>
+    <style>
+        /* Your existing styles remain the same until .hero-section */
+
+        /* New Carousel Styles */
+        
+
+        /* Rest of your existing styles remain the same */
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <!-- Your existing navbar remains the same -->
+    </nav>
+
+    <!-- Replace hero-section with this carousel -->
+    <section class="hero-carousel">
+        <div class="carousel-slides">
+            <!-- Slide 1 -->
+            <div class="carousel-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080?text=Slide+1')">
+                <div class="floating-shapes">
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                </div>
+                <div class="slide-content">
+                    <h1 class="hero-title">Stream Without Limits</h1>
+                    <h2 class="hero-subtitle">The Home of Africa's Best Entertainment</h2>
+                    <p class="hero-description">
+                        Discover award-winning local series, blockbuster international movies, and exclusive content all in one place.
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary">Start Watching Now</button>
+                        <button class="btn-secondary">Browse Content</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="carousel-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080?text=Slide+2')">
+                <div class="floating-shapes">
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                </div>
+                <div class="slide-content">
+                    <h1 class="hero-title">Live Sports Action</h1>
+                    <h2 class="hero-subtitle">Never Miss a Moment</h2>
+                    <p class="hero-description">
+                        Stream Premier League football and other live sports events in crystal clear quality.
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary">Watch Live Now</button>
+                        <button class="btn-secondary">See Schedule</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="carousel-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080?text=Slide+3')">
+                <div class="floating-shapes">
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                </div>
+                <div class="slide-content">
+                    <h1 class="hero-title">Showmax Originals</h1>
+                    <h2 class="hero-subtitle">Exclusive Content Just For You</h2>
+                    <p class="hero-description">
+                        Binge-watch our exclusive original series you won't find anywhere else.
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary">Explore Originals</button>
+                        <button class="btn-secondary">Start Free Trial</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Buttons -->
+        <button class="carousel-btn prev">❮</button>
+        <button class="carousel-btn next">❯</button>
+        
+        <!-- Navigation Dots -->
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+        </div>
+    </section>
+
+    <!-- Your existing footer remains the same -->
+
+    <script>
+        // Carousel Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelector('.carousel-slides');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const slideCount = document.querySelectorAll('.carousel-slide').length;
+            let currentIndex = 0;
+            let autoSlideInterval;
+
+            // Set initial active slide
+            updateCarousel();
+
+            // Auto slide every 5 seconds
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % slideCount;
+                    updateCarousel();
+                }, 5000);
+            }
+
+            // Start auto slide
+            startAutoSlide();
+
+            // Pause auto slide on hover
+            const carousel = document.querySelector('.hero-carousel');
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+
+            carousel.addEventListener('mouseleave', startAutoSlide);
+
+            // Next button click
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateCarousel();
+                resetAutoSlide();
+            });
+
+            // Previous button click
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateCarousel();
+                resetAutoSlide();
+            });
+
+            // Dot navigation click
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    currentIndex = parseInt(dot.getAttribute('data-index'));
+                    updateCarousel();
+                    resetAutoSlide();
+                });
+            });
+
+            // Update carousel display
+            function updateCarousel() {
+                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            // Reset auto slide timer
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // Your existing scripts remain the same
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(0, 0, 0, 0.9)';
+                    navbar.style.backdropFilter = 'blur(20px)';
+                } else {
+                    navbar.style.background = 'rgba(0, 0, 0, 0.1)';
+                    navbar.style.backdropFilter = 'blur(10px)';
+                }
+            });
+
+            // Mobile menu toggle
+            const logo = document.querySelector('.logo');
+            logo.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    const navLinks = document.querySelector('.nav-links');
+                    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
